@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stories Of The Frame - About</title>
+
+  <!-- Font Awesome for social media icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f8f8f8;
+      color: #333;
+    }
+
+    .navbar {
+      background-color: #111;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      font-family: 'Georgia', serif;
+      color: #fefefe;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #f5f5f5;
+      font-weight: 600;
+      font-size: 18px;
+      position: relative;
+    }
+
+    .nav-links li a::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #f5f5f5;
+      transition: 0.3s ease;
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+    }
+
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+      color: white;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .description {
+      font-size: 20px;
+      line-height: 1.8;
+      text-align: center;
+      font-family: 'Times New Roman', Times, serif;
+      max-width: 800px;
+      margin: 40px auto;
+    }
+
+    .creator {
+      text-align: center;
+      margin: 30px auto;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .owner-photo {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .owner-photo img {
+      width: 200px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .social-links {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .social-links a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    .social-links a i {
+      margin-right: 8px;
+      color: #555;
+    }
+
+    .social-links a:hover {
+      color: #0073e6;
+    }
+
+    footer {
+      background-color: #111;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    footer a {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #f5f5f5;
+      color: #111;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        background-color: #111;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        display: none;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links li {
+        text-align: center;
+        padding: 8px 0;
+        border-top: 1px solid #333;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Video Banner -->
+  <video autoplay muted loop>
+    <source src="vid/VID-20250129-WA0007.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">Stories Of The Frame</div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Frame.html">Gallery</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="serives.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Description -->
+<p class="description">
+  Welcome to <strong>Stories of the Frame</strong>, where memories come to life.
+  We specialize in capturing your most beautiful moments with emotion and artistry.
+  From weddings to portraits, every frame tells a story.
+  Your happiness is our inspiration.
+  <strong>This is more than a studio — it's your story, framed.</strong>
+</p>
+
+  <!-- Studio Creator -->
+  <div class="creator">
+    Studio created by- <strong>Somnath Nevaskar</strong>
+  </div>
+
+  <!-- Owner Photo -->
+  <div class="owner-photo">
+    <img src="photo/somesh.jpeg" alt="Owner Photo">
+  </div>
+
+  <!-- Social Media Links with Icons -->
+  <div class="social-links">
+    <a href="https://www.instagram.com/_someshwar_rao?igsh=eXB0MXd5MjUyZXI3" target="_blank">
+      <i class="fab fa-instagram fa-fw"></i>Instagram
+    </a>
+   
+    </a>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <h2 style="font-family: 'Georgia', serif; font-size: 24px;">Thank you for visiting our website</h2>
+    <p style="margin-top: 10px; font-size: 18px;">You can contact us by clicking the button below</p>
+    <a href="contact.html">Contact Us</a>
+    <br>
+    <p>© 2026  Stories of the Frame. All Rights Reserved. | Created by Aditya Kulkarni</p>
+  </footer>
+
+  <!-- Script for Mobile Menu -->
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("navLinks");
+      nav.classList.toggle("show");
+    }
+  </script>
+</body>
+</html>

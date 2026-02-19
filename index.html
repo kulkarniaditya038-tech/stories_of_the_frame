@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Stories Of The Frame</title>
+
+<style>
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* ================= SECTION TITLES ================= */
+.section-title, h2 {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Georgia', serif;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  background-color: #111;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Georgia', serif;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #f5f5f5;
+  font-weight: 600;
+  font-size: 18px;
+  position: relative;
+}
+
+.nav-links li a::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  background: #f5f5f5;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    background-color: #111;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    display: none;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li {
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #333;
+  }
+}
+
+/* ================= VIDEO ================= */
+video {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ================= SECTIONS ================= */
+section {
+  padding: 60px 20px;
+  min-height: 100vh;
+  text-align: center;
+}
+
+p.description {
+  font-size: 20px;
+  line-height: 1.8;
+  font-family: 'Times New Roman', Times, serif;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* ================= SLIDER ================= */
+.slider-container {
+  width: 100%;
+  overflow: hidden;
+  background-color: #f4f4f4;
+}
+
+.slider {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+.slide-wrapper {
+  flex: 0 0 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-wrapper img {
+  width: 95%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* ================= SCROLL ANIMATION ================= */
+.scroll-img {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 0.8s ease;
+  margin: 20px auto;
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 10px;
+}
+
+.scroll-img.left {
+  transform: translateX(-100px);
+}
+
+.scroll-img.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ================= LIGHTBOX ================= */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+/* ================= FOOTER ================= */
+footer {
+  background-color: #111;
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO BANNER -->
+<video autoplay muted loop>
+  <source src="vid/VID-20250129-WA0007.mp4" type="video/mp4">
+</video>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">Stories Of The Frame</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#">Home</a></li>
+      <li><a href="Frame.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="serives.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HOME SECTION -->
+<section id="home">
+  <p class="description">
+    At <strong>Stories of the Frame</strong>, photography is not just about clicking pictures—<br>
+    it's about <strong>golden moments that tell a story</strong>.<br>
+    We don't just take photos, we <strong>preserve memories and freeze time with meaning</strong>.<br>
+    For us, it's not a profession, it's a <strong>passion</strong>.<br>
+    Every shot reflects authenticity, emotion, and the true essence of life.<br>
+    Because in the end, it's not just a photo—it's a story captured forever.<br><br>
+    <strong>This is the Stories Of The Frame...</strong>
+  </p>
+</section>
+
+<!-- SLIDER -->
+<h2>Some Capture</h2>
+<div class="slider-container">
+  <div class="slider" id="slider">
+    <div class="slide-wrapper"><img src="photo/wedding.jpeg" alt="Slide 1" onclick="showLightbox(this.src)"></div>
+    <div class="slide-wrapper"><img src="photo/wedding11.jpeg" alt="Slide 2" onclick="showLightbox(this.src)"></div>
+    <div class="slide-wrapper"><img src="photo/wedding3.jpeg" alt="Slide 3" onclick="showLightbox(this.src)"></div>
+    <div class="slide-wrapper"><img src="prewedding/pr.jpeg" alt="Slide 4" onclick="showLightbox(this.src)"></div>
+    <div class="slide-wrapper"><img src="engagement/engg7.jpeg" alt="Slide 5" onclick="showLightbox(this.src)"></div>
+    <div class="slide-wrapper"><img src="photo/wedding4.jpeg" alt="Slide 6" onclick="showLightbox(this.src)"></div>
+  </div>
+</div>
+
+<!-- "YOU MAY ALSO LIKE" SECTION -->
+<div class="section-title">YOU MAY ALSO LIKE</div>
+<div style="padding:20px;">
+  <img src="photo/wedding2.jpeg" alt="img3" class="scroll-img left" onclick="showLightbox(this.src)">
+  <img src="photo/engg2.jpeg" alt="img4" class="scroll-img right" onclick="showLightbox(this.src)">
+ <img src="photo/engg.jpeg" alt="img6" class="scroll-img right" onclick="showLightbox(this.src)">
+  <img src="prewedding/WhatsApp Image 2026-02-18 at 20.42.50.jpeg" alt="img6" class="scroll-img right" onclick="showLightbox(this.src)">
+  <img src="photo/prewedding2.jpeg" alt="img7" class="scroll-img left" onclick="showLightbox(this.src)">
+  <img src="prewedding/WhatsApp Image 2026-02-18 at 20.42.52.jpeg" alt="img1" class="scroll-img left" onclick="showLightbox(this.src)">
+
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+  <span class="close" onclick="hideLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="Expanded Image">
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <h2 style="font-family: 'Georgia', serif;">Thank you for visiting our website</h2>
+  <p>You can contact us by clicking the button below</p>
+  <a href="contact.html" style="display:inline-block;margin-top:20px;background-color:#f5f5f5;color:#111;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;">
+    Contact Us
+  </a>
+  <br><br>
+  <p>© 2026  Stories of the Frame. All Rights Reserved. | Created by Aditya Kulkarni</p>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+function showLightbox(src) {
+  document.getElementById("lightbox-img").src = src;
+  document.getElementById("lightbox").style.display = "flex";
+}
+
+function hideLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+
+/* ===== SLIDER ===== */
+const slider = document.getElementById("slider");
+const slides = document.querySelectorAll(".slide-wrapper");
+let index = 0;
+setInterval(() => {
+  index = (index + 1) % slides.length;
+  slider.style.transform = `translateX(-${index * 100}%)`;
+}, 4000);
+
+/* ===== SCROLL ANIMATION ===== */
+function revealOnScroll() {
+  const images = document.querySelectorAll('.scroll-img');
+  const triggerBottom = window.innerHeight * 0.85;
+
+  images.forEach(img => {
+    const imgTop = img.getBoundingClientRect().top;
+    if (imgTop < triggerBottom) {
+      img.classList.add('visible');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
+
+</body>
+</html>

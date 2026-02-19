@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stories Of The Frame - Contact</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .navbar {
+      background-color: #111;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+      box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      font-family: 'Georgia', serif;
+      color: #fefefe;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #f5f5f5;
+      font-weight: 600;
+      font-size: 18px;
+      position: relative;
+      padding-bottom: 5px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background-color: white;
+      left: 0;
+      bottom: 0;
+      transition: width 0.3s ease-in-out;
+    }
+
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links li a.active::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        background-color: #111;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        display: none;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links li {
+        text-align: center;
+        padding: 8px 0;
+        border-top: 1px solid #333;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .contact-section {
+      padding: 60px 20px;
+      text-align: center;
+      background: #000;
+      animation: fadeInUp 1s ease-in-out both;
+    }
+
+    .contact-title {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .contact-subtitle {
+      font-size: 16px;
+      color: #aaa;
+      margin-bottom: 40px;
+    }
+
+    .contact-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      background: #111;
+      padding: 20px;
+      border-radius: 12px;
+      width: 140px;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      transition: background 0.3s ease;
+    }
+
+    .contact-link:hover {
+      background: #222;
+    }
+
+    .contact-link img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .contact-link div {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Video Banner -->
+  <video autoplay muted loop>
+    <source src="vid/VID-20250129-WA0007.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">Stories Of The Frame</div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Frame.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="serives.html">Services</a></li>
+        <li><a href="#" class="active">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h2 class="contact-title">Let's Connect</h2>
+    <p class="contact-subtitle">Reach out to us anytime</p>
+
+    <div class="contact-icons">
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/_stories_of_the_frame_?igsh=MXc0NmU3d3RmYnJr" target="_blank" class="contact-link" title="Instagram">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" />
+        <div>Instagram</div>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/919209635051?text=Hi%2C%20I%20have%20book%20order%20on" target="_blank" class="contact-link" title="WhatsApp">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+        <div>WhatsApp</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById("navLinks");
+      navLinks.classList.toggle("show");
+    }
+  </script>
+
+</body>
+</html>

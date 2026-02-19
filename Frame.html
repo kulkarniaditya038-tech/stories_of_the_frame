@@ -1,0 +1,415 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stories Of The Frame - Gallery</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+}
+
+video.banner-video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.navbar {
+  background-color: #111;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Georgia', serif;
+  color: #fefefe;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #f5f5f5;
+  font-weight: 600;
+  font-size: 18px;
+  position: relative;
+}
+
+.nav-links li a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #f5f5f5;
+  transition: 0.3s ease;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    background-color: #111;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    display: none;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li {
+    text-align: center;
+    padding: 8px 0;
+    border-top: 1px solid #333;
+  }
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.switcher {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.switcher button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  background-color: #444;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.switcher button.active,
+.switcher button:hover {
+  background-color: #000;
+}
+
+.gallery {
+  columns: 2;
+  column-gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .gallery {
+    columns: 3;
+  }
+}
+
+.gallery img {
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+}
+
+.video-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.video-grid video {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  width: 320px;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+footer {
+  background-color: #111;
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+footer a {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #f5f5f5;
+  color: #111;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+footer a:hover {
+  background-color: #ddd;
+}
+
+  </style>
+</head>
+<body>  <!-- Video Banner -->  <video autoplay muted loop class="banner-video" controlsList="nodownload" oncontextmenu="return false;">
+    <source src="vid/VID-20250129-WA0007.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>  <!-- Navigation -->  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">Stories Of The Frame</div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="serives.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>  <div class="section-container">
+    <div class="switcher">
+      <button class="active" onclick="showMainSection('photos')">Photos</button>
+      <button onclick="showMainSection('videos')">Videos</button>
+    </div><!-- Photos Section -->
+<div id="photos">
+  <h2 id="wedding-photos" style="text-align:center;">Wedding Photos</h2>
+ <div class="gallery">
+    <img src="photo/wedding.jpeg" onclick="openLightbox(this.src)">
+    <img src="photo/wedding2.jpeg" onclick="openLightbox(this.src)">
+    <img src="photo/IMG_7778.JPG" onclick="openLightbox(this.src)">
+    <img src="photo/IMG_0928.JPG" onclick="openLightbox(this.src)">
+    <img src="photo/wedding9.jpeg" onclick="openLightbox(this.src)">
+    
+    
+    <img src="photo/wedding4.jpeg" onclick="openLightbox(this.src)">
+    <img src="photo/wedding6.jpeg" onclick="openLightbox(this.src)">
+    <img src="photo/wedding3.jpeg" onclick="openLightbox(this.src)">
+    
+    <img src="photo/IMG_2652.JPG" onclick="openLightbox(this.src)">
+    <img src="photo/wedding11.jpeg" onclick="openLightbox(this.src)">
+    <img src="photo/wedding7.jpeg" onclick="openLightbox(this.src)">
+    <img src="photo/wedding5.jpeg" onclick="openLightbox(this.src)">
+    <img src="photo/IMG_6276.JPG" onclick="openLightbox(this.src)">
+    
+    
+   </div>
+
+  <h2 id="engagement-photos" style="text-align:center; margin-top: 40px;">Engagement Photos</h2>
+ <div class="gallery">
+    <img src="engagement/engg3.jpeg" onclick="openLightbox(this.src)">
+    <img src="photo/engg2.jpeg" onclick="openLightbox(this.src)">
+    <img src="photo/engg.jpeg" onclick="openLightbox(this.src)">
+    <img src="engagement/engg5.jpeg" onclick="openLightbox(this.src)">
+    <img src="engagement/engg8.jpeg" onclick="openLightbox(this.src)">
+    <img src="engagement/engg9.jpeg" onclick="openLightbox(this.src)">
+    <img src="engagement/engg6.jpeg" onclick="openLightbox(this.src)">
+    <img src="engagement/engg7.jpeg" onclick="openLightbox(this.src)">
+    <img src="engagement/enng4.jpeg" onclick="openLightbox(this.src)">
+   
+  </div>
+
+ <h2 id="PreWedding" style="text-align:center; margin-top: 40px;">Prewedding Photos</h2>
+  <div class="gallery">
+    <img src="photo/prewedding.jpeg" onclick="openLightbox(this.src)">
+    <img src="photo/prewedding1.jpeg" onclick="openLightbox(this.src)">
+    <img src="photo/prewedding2.jpeg" onclick="openLightbox(this.src)">
+    
+    
+    <img src="prewedding/WhatsApp Image 2026-02-18 at 20.42.48 (1).jpeg" onclick="openLightbox(this.src)">
+    <img src="prewedding/WhatsApp Image 2026-02-18 at 20.42.49.jpeg" onclick="openLightbox(this.src)">
+    <img src="prewedding/WhatsApp Image 2026-02-18 at 20.42.50.jpeg" onclick="openLightbox(this.src)">
+    
+    <img src="prewedding/WhatsApp Image 2026-02-18 at 20.42.53.jpeg" onclick="openLightbox(this.src)">
+    <img src="prewedding/WhatsApp Image 2026-02-18 at 20.42.52.jpeg" onclick="openLightbox(this.src)">
+    <img src="prewedding/WhatsApp Image 2026-02-18 at 20.42.51.jpeg" onclick="openLightbox(this.src)">
+    <img src="prewedding/WhatsApp Image 2026-02-18 at 20.42.55.jpeg" onclick="openLightbox(this.src)">
+    
+      <img src="prewedding/WhatsApp Image 2026-02-18 at 20.42.56.jpeg" onclick="openLightbox(this.src)">
+   
+  </div>
+
+  <h2 id="Baby-photos" style="text-align:center; margin-top: 40px;">Baby Photos</h2>
+  <div class="gallery">
+    <img src="baby/baby11.jpeg" onclick="openLightbox(this.src)">
+    <img src="baby/baby.jpeg" onclick="openLightbox(this.src)">
+    <img src="baby/baby1.jpeg" onclick="openLightbox(this.src)">
+    <img src="baby/baby2.jpeg" onclick="openLightbox(this.src)">
+    <img src="baby/baby3.jpeg" onclick="openLightbox(this.src)">
+    <img src="baby/baby4.jpeg" onclick="openLightbox(this.src)">
+     <img src="baby/baby5.jpeg" onclick="openLightbox(this.src)">
+    <img src="baby/baby6.jpeg" onclick="openLightbox(this.src)">
+     <img src="baby/baby7.jpeg" onclick="openLightbox(this.src)">
+    <img src="baby/baby8.jpeg" onclick="openLightbox(this.src)">
+     <img src="baby/baby9.jpeg" onclick="openLightbox(this.src)">
+     <img src="baby/baby12.jpeg" onclick="openLightbox(this.src)">
+    <img src="baby/baby10.jpeg" onclick="openLightbox(this.src)">
+     <img src="baby/baby10.jpeg" onclick="openLightbox(this.src)">
+     
+   
+    
+  </div>
+
+
+<h2 id="Jewellery-photos" style="text-align:center; margin-top: 40px;">Jewellery Photos</h2>
+  <div class="gallery">
+    <img src="product/jewellery/jewellery.jpeg" onclick="openLightbox(this.src)">
+    <img src="product/jewellery/j1.jpeg" onclick="openLightbox(this.src)">
+    <img src="product/jewellery/j2.jpeg" onclick="openLightbox(this.src)">
+    <img src="product/jewellery/j3.jpeg" onclick="openLightbox(this.src)">
+    <img src="product/jewellery/j4.jpeg" onclick="openLightbox(this.src)">
+    <img src="product/jewellery/j5.jpeg" onclick="openLightbox(this.src)">
+    <img src="product/jewellery/j6.jpeg" onclick="openLightbox(this.src)">
+
+   
+  </div>
+
+  <h2 id="food" style="text-align:center; margin-top: 40px;">Food Product Photos</h2>
+  <div class="gallery">
+    <img src="product/food/food.jpeg" onclick="openLightbox(this.src)">
+    <img src="product/food/WhatsApp Image 2026-02-18 at 18.18.26 (1).jpeg" onclick="openLightbox(this.src)">
+    <img src="product/food/WhatsApp Image 2026-02-18 at 18.18.26.jpeg" onclick="openLightbox(this.src)">
+    <img src="product/food/WhatsApp Image 2026-02-18 at 18.18.27 (1).jpeg" onclick="openLightbox(this.src)">
+    <img src="product/food/WhatsApp Image 2026-02-18 at 18.18.27.jpeg" onclick="openLightbox(this.src)">
+   
+
+   
+  </div>
+
+</div>
+
+
+
+
+
+<!-- Videos Section -->
+<div id="videos" style="display:none;">
+  <h2 id="wedding-videos" style="text-align:center;">Cinimatic Videos</h2>
+  <div class="video-grid">
+    <video controls controlsList="nodownload" oncontextmenu="return false;">
+      <source src="vid/vid1.mp4" type="video/mp4">
+    </video>
+    <video controls controlsList="nodownload" oncontextmenu="return false;">
+      <source src="vid/vid2.mp4" type="video/mp4">
+    </video>
+    
+  </div>
+
+  
+</div>
+
+
+
+  </div>  <!-- Lightbox -->  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="">
+  </div>  <!-- Footer -->  <footer>
+    <h2 style="font-family: 'Georgia', serif; font-size: 24px;">Thank you for visiting our website</h2>
+    <p style="margin-top: 10px; font-size: 18px;">You can contact us by clicking the button below</p>
+    <a href="contact.html">Contact Us</a>
+     <br>
+    <p>© 2026  Stories of the Frame. All Rights Reserved. | Created by Aditya Kulkarni</p>
+  </footer>  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    function openLightbox(src) {
+      document.getElementById("lightbox-img").src = src;
+      document.getElementById("lightbox").style.display = "flex";
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+
+    function showMainSection(section) {
+      document.getElementById("photos").style.display = section === "photos" ? "block" : "none";
+      document.getElementById("videos").style.display = section === "videos" ? "block" : "none";
+      const buttons = document.querySelectorAll(".switcher button");
+      buttons.forEach(btn => btn.classList.remove("active"));
+      document.querySelector(`.switcher button[onclick="showMainSection('${section}')"]`).classList.add("active");
+
+      // Pause videos when switching
+      const videos = document.querySelectorAll("video");
+      videos.forEach(v => v.pause());
+    }
+
+    // Only one video plays at a time
+    document.addEventListener("DOMContentLoaded", function () {
+      const videos = document.querySelectorAll("video");
+      videos.forEach(video => {
+        video.addEventListener("play", () => {
+          videos.forEach(v => {
+            if (v !== video) v.pause();
+          });
+        });
+      });
+    });
+  </script></body>
+</html>
